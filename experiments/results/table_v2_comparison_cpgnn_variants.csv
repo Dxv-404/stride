@@ -1,0 +1,4 @@
+name,baseline_mean,variant_mean,diff,W_statistic,p_value,significance,cohens_d,rank_biserial_r
+cpgnn_frozen,948.7878,1024.2051,75.4173,-1.6854,0.0919,ns,0.5317,0.2533
+cpgnn_mixed,948.7878,701.2512,-247.5366,6.2686,0.0000,***,-2.1509,-0.9422
+cpgnn_2x_budget,948.7878,1190.9979,242.2102,-4.8049,0.0000,***,1.5387,0.7222

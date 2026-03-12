@@ -1,0 +1,3 @@
+name,baseline_mean,variant_mean,diff,W_statistic,p_value,significance,cohens_d,rank_biserial_r
+roulette_selection,746.7760,789.6147,42.8388,-1.9220,0.0546,ns,0.3539,0.2889
+rank_selection,746.7760,782.9603,36.1843,-1.3602,0.1738,ns,0.2788,0.2044

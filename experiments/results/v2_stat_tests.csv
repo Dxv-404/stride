@@ -1,0 +1,8 @@
+experiment,baseline_mean,variant_mean,diff,p_value,p_adjusted_holm,significance_raw,significance_corrected,cohens_d,effect_label,rank_biserial_r
+cpg_baseline,746.7760,889.3131,142.5371,0.0000,0.0000,***,***,1.1423,large,0.6844
+cpgnn_flat,746.7760,948.7878,202.0118,0.0000,0.0000,***,***,1.6787,large,0.8267
+cpgnn_frozen,746.7760,1024.2051,277.4291,0.0000,0.0000,***,***,1.7705,large,0.8400
+cpgnn_mixed,746.7760,701.2512,-45.5248,0.1646,0.1646,ns,ns,-0.3424,small,-0.2089
+cpgnn_random_init,746.7760,889.2393,142.4633,0.0287,0.0573,*,ns,0.6648,medium,0.3289
+cpgnn_2x_budget,746.7760,1190.9979,444.2219,0.0000,0.0000,***,***,2.5991,large,0.9467
+cpgnn_high_mutation,746.7760,992.5121,245.7361,0.0000,0.0000,***,***,1.5807,large,0.8000

@@ -1,0 +1,3 @@
+name,baseline_mean,variant_mean,diff,W_statistic,p_value,significance,cohens_d,rank_biserial_r
+cpg_hill,889.3131,595.0309,-294.2822,5.7364,0.0000,***,-2.0358,-0.8622
+cpg_mixed,889.3131,719.1795,-170.1336,6.2982,0.0000,***,-1.8698,-0.9467

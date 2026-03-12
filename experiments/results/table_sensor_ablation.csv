@@ -1,0 +1,9 @@
+sensor,mean_fitness,mean_drop,mean_drop_pct,std_drop_pct
+hip_L_angle,395.21,28.68,-10.54,242.01
+hip_R_angle,344.28,79.61,-50.33,159.94
+hip_L_angvel,421.48,2.42,-46.15,171.97
+hip_R_angvel,428.74,-4.84,-97.60,317.15
+torso_angle,357.81,66.08,3.59,97.59
+foot_L_contact,384.87,39.02,-30.19,119.22
+both_hip_angles,412.84,11.05,-116.05,246.14
+both_foot_contacts,384.87,39.02,-30.19,119.22

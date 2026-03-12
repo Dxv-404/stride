@@ -1,0 +1,48 @@
+{
+  "hip_L_angle": {
+    "mean_drop_pct": -10.538053203137938,
+    "std_drop_pct": 242.01277393709466,
+    "mean_fitness": 395.2149105423654
+  },
+  "hip_R_angle": {
+    "mean_drop_pct": -50.33334618121108,
+    "std_drop_pct": 159.94492814277112,
+    "mean_fitness": 344.28311862606154
+  },
+  "hip_L_angvel": {
+    "mean_drop_pct": -46.14632728581568,
+    "std_drop_pct": 171.97091805959695,
+    "mean_fitness": 421.47941454509566
+  },
+  "hip_R_angvel": {
+    "mean_drop_pct": -97.60265322917198,
+    "std_drop_pct": 317.14518831249285,
+    "mean_fitness": 428.73623317763304
+  },
+  "torso_angle": {
+    "mean_drop_pct": 3.5936276103788236,
+    "std_drop_pct": 97.59201619111417,
+    "mean_fitness": 357.8148790937165
+  },
+  "foot_L_contact": {
+    "mean_drop_pct": -30.193928928030225,
+    "std_drop_pct": 119.22240407845999,
+    "mean_fitness": 384.8728268762267
+  },
+  "both_hip_angles": {
+    "mean_drop_pct": -116.04543380579653,
+    "std_drop_pct": 246.13656438342403,
+    "mean_fitness": 412.84403750186146
+  },
+  "both_foot_contacts": {
+    "mean_drop_pct": -30.193928928030225,
+    "std_drop_pct": 119.22240407845999,
+    "mean_fitness": 384.8728268762267
+  },
+  "_baseline": {
+    "mean": 423.8955536847943
+  },
+  "_frozen": {
+    "mean": 272.73945959100445
+  }
+}

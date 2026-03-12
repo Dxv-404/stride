@@ -1,0 +1,25 @@
+============================================================
+  STRIDE Phase 3 Subset Runner
+  Experiments: crossover_high, pop_small, pop_large, island_model, fitness_sharing
+  (5 experiments × 30 runs)
+============================================================
+
+--- [1/5] crossover_high ---
+    Run 1/30: fitness=774.99 (403s)
+    Run 2/30: fitness=828.62 (407s)
+    Run 3/30: fitness=792.14 (387s)
+    Run 4/30: fitness=905.12 (344s)
+    Run 5/30: fitness=880.41 (324s)
+    Run 6/30: fitness=788.31 (330s)
+    Run 7/30: fitness=741.05 (334s)
+    Run 8/30: fitness=642.33 (328s)
+    Run 9/30: fitness=929.86 (332s)
+    Run 10/30: fitness=706.45 (332s)
+    Run 11/30: fitness=1007.06 (330s)
+    Run 12/30: fitness=779.78 (327s)
+    Run 13/30: fitness=851.59 (344s)
+    Run 14/30: fitness=622.01 (331s)
+    Run 15/30: fitness=1002.91 (330s)
+    Run 16/30: fitness=532.99 (333s)
+    Run 17/30: fitness=893.47 (649s)
+    Run 18/30: fitness=824.97 (1118s)

@@ -1,0 +1,291 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════════════
+   STRIDE Design System — Monochromatic, Dual-Mode
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ─── Base Theme Tokens (Dark Mode Default) ─── */
+@theme {
+  --color-bg: #0A0A0A;
+  --color-bg-surface: #141414;
+  --color-bg-panel: #111111;
+  --color-bg-elevated: #1E1E1E;
+
+  --color-text-primary: #E7E7E7;
+  --color-text-secondary: rgba(231, 231, 231, 0.6);
+  --color-text-muted: rgba(231, 231, 231, 0.3);
+  --color-text-dim: rgba(231, 231, 231, 0.18);
+
+  --color-accent: #C4956A;
+  --color-accent-hover: #D4A87D;
+  --color-accent-subtle: rgba(196, 149, 106, 0.12);
+
+  --color-border: #2E2E2E;
+  --color-border-hover: #444444;
+
+  --color-success: #6BBF59;
+  --color-danger: #D4574E;
+
+  /* Simulation creature colors — muted, desaturated */
+  --color-creature-default: #AAAAAA;
+  --color-creature-sine: #8899AA;
+  --color-creature-cpg: #88AA99;
+  --color-creature-cpg-nn: #AA9988;
+
+  /* Canvas */
+  --color-canvas-bg: #0F0F0F;
+  --color-canvas-ground: #2A2A2A;
+  --color-canvas-ground-fill: #151515;
+
+  /* Fitness (for data viz only) */
+  --color-fitness-low: #D4574E;
+  --color-fitness-mid: #C4956A;
+  --color-fitness-high: #6BBF59;
+
+  --font-mono: "JetBrains Mono", monospace;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-display: "Array", system-ui, sans-serif;
+
+  /* Landing page */
+  --landing-bg: #0A0A0A;
+}
+
+/* ─── Light Mode Token Overrides ─── */
+[data-theme="light"] {
+  --color-bg: #FFFFFF;
+  --color-bg-surface: #F5F5F5;
+  --color-bg-panel: #FAFAFA;
+  --color-bg-elevated: #EBEBEB;
+
+  --color-text-primary: #0A0A0A;
+  --color-text-secondary: rgba(10, 10, 10, 0.6);
+  --color-text-muted: rgba(10, 10, 10, 0.3);
+  --color-text-dim: rgba(10, 10, 10, 0.18);
+
+  --color-accent: #A07850;
+  --color-accent-hover: #8A6842;
+  --color-accent-subtle: rgba(160, 120, 80, 0.10);
+
+  --color-border: #D4D4D4;
+  --color-border-hover: #A3A3A3;
+
+  --color-success: #4A8F3C;
+  --color-danger: #B54040;
+
+  --color-creature-default: #444444;
+  --color-creature-sine: #667788;
+  --color-creature-cpg: #668877;
+  --color-creature-cpg-nn: #887766;
+
+  --color-canvas-bg: #F0F0F0;
+  --color-canvas-ground: #CCCCCC;
+  --color-canvas-ground-fill: #E5E5E5;
+
+  --color-fitness-low: #B54040;
+  --color-fitness-mid: #A07850;
+  --color-fitness-high: #4A8F3C;
+
+  /* Landing page */
+  --landing-bg: #F7F7F7;
+}
+
+/* ─── Base Reset ─── */
+/* IMPORTANT: Must be inside @layer base so Tailwind utilities can override it.
+   Un-layered CSS beats @layer utilities in the CSS cascade, which would
+   make all margin/padding utility classes (mb-*, p-*, etc.) non-functional. */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+html {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Typography Utilities ─── */
+.font-mono {
+  font-family: var(--font-mono);
+  letter-spacing: -0.02em;
+}
+
+/* ─── Color Transition (smooth theme toggle) ─── */
+html {
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+html *,
+html *::before,
+html *::after {
+  transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease;
+}
+
+/* Exclude canvases and animated elements from transition */
+canvas,
+svg circle,
+svg path,
+.no-transition,
+.no-transition * {
+  transition: none !important;
+}
+
+/* ─── Film Grain Overlay (dark mode only) ─── */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.02;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  animation: grain-shift 8s steps(6) infinite;
+}
+
+[data-theme="light"] .grain-overlay {
+  display: none;
+}
+
+@keyframes grain-shift {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-2%, -3%); }
+  30% { transform: translate(3%, 2%); }
+  50% { transform: translate(-1%, 4%); }
+  70% { transform: translate(2%, -2%); }
+  90% { transform: translate(-3%, 1%); }
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-hover);
+}
+
+/* ─── Selection ─── */
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+/* ─── Button System ─── */
+.btn-flat {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  border-radius: 0;
+}
+
+.btn-flat:hover {
+  border-color: var(--color-border-hover);
+  background: var(--color-bg-elevated);
+}
+
+.btn-flat:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-flat.btn-primary {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+.btn-flat.btn-primary:hover {
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+}
+
+.btn-flat.btn-danger {
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+}
+
+.btn-flat.btn-danger:hover {
+  background: var(--color-danger);
+  color: var(--color-bg);
+}
+
+/* ─── Graph Entry Animation ─── */
+@keyframes graph-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-graph-enter {
+  animation: graph-enter 350ms ease-out both;
+}
+
+/* ─── Lenis Smooth Scroll ─── */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* ─── Landing Scrollytelling Sections ─── */
+.landing-section {
+  position: relative;
+  width: 100%;
+}
+
+/* When scroll is locked for interactive 3D section */
+.scroll-locked {
+  overflow: hidden;
+}
+

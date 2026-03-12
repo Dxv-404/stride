@@ -1,0 +1,2 @@
+name,baseline_mean,variant_mean,diff,W_statistic,p_value,significance,cohens_d,rank_biserial_r
+indirect_encoding,154.7847,120.0632,-34.7215,5.1893,0.0000,***,-1.5681,-0.7800

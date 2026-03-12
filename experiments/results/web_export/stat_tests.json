@@ -1,0 +1,93 @@
+[
+  {
+    "experiment": "cpg_baseline",
+    "baseline_mean": "746.7760",
+    "variant_mean": "889.3131",
+    "diff": "142.5371",
+    "p_value": "0.0000",
+    "p_adjusted_holm": "0.0000",
+    "significance_raw": "***",
+    "significance_corrected": "***",
+    "cohens_d": "1.1423",
+    "effect_label": "large",
+    "rank_biserial_r": "0.6844"
+  },
+  {
+    "experiment": "cpgnn_flat",
+    "baseline_mean": "746.7760",
+    "variant_mean": "948.7878",
+    "diff": "202.0118",
+    "p_value": "0.0000",
+    "p_adjusted_holm": "0.0000",
+    "significance_raw": "***",
+    "significance_corrected": "***",
+    "cohens_d": "1.6787",
+    "effect_label": "large",
+    "rank_biserial_r": "0.8267"
+  },
+  {
+    "experiment": "cpgnn_frozen",
+    "baseline_mean": "746.7760",
+    "variant_mean": "1024.2051",
+    "diff": "277.4291",
+    "p_value": "0.0000",
+    "p_adjusted_holm": "0.0000",
+    "significance_raw": "***",
+    "significance_corrected": "***",
+    "cohens_d": "1.7705",
+    "effect_label": "large",
+    "rank_biserial_r": "0.8400"
+  },
+  {
+    "experiment": "cpgnn_mixed",
+    "baseline_mean": "746.7760",
+    "variant_mean": "701.2512",
+    "diff": "-45.5248",
+    "p_value": "0.1646",
+    "p_adjusted_holm": "0.1646",
+    "significance_raw": "ns",
+    "significance_corrected": "ns",
+    "cohens_d": "-0.3424",
+    "effect_label": "small",
+    "rank_biserial_r": "-0.2089"
+  },
+  {
+    "experiment": "cpgnn_random_init",
+    "baseline_mean": "746.7760",
+    "variant_mean": "889.2393",
+    "diff": "142.4633",
+    "p_value": "0.0287",
+    "p_adjusted_holm": "0.0573",
+    "significance_raw": "*",
+    "significance_corrected": "ns",
+    "cohens_d": "0.6648",
+    "effect_label": "medium",
+    "rank_biserial_r": "0.3289"
+  },
+  {
+    "experiment": "cpgnn_2x_budget",
+    "baseline_mean": "746.7760",
+    "variant_mean": "1190.9979",
+    "diff": "444.2219",
+    "p_value": "0.0000",
+    "p_adjusted_holm": "0.0000",
+    "significance_raw": "***",
+    "significance_corrected": "***",
+    "cohens_d": "2.5991",
+    "effect_label": "large",
+    "rank_biserial_r": "0.9467"
+  },
+  {
+    "experiment": "cpgnn_high_mutation",
+    "baseline_mean": "746.7760",
+    "variant_mean": "992.5121",
+    "diff": "245.7361",
+    "p_value": "0.0000",
+    "p_adjusted_holm": "0.0000",
+    "significance_raw": "***",
+    "significance_corrected": "***",
+    "cohens_d": "1.5807",
+    "effect_label": "large",
+    "rank_biserial_r": "0.8000"
+  }
+]

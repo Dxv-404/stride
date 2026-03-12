@@ -1,0 +1,131 @@
+
+============================================================
+  STRIDE Phase A — V2 Experiment Pipeline
+============================================================
+
+  Experiments: 9
+  Run order:   cpg_baseline -> cpgnn_flat -> cpgnn_frozen -> cpg_hill -> cpg_mixed -> cpgnn_mixed -> cpgnn_2x_budget -> cpgnn_random_init -> cpgnn_high_mutation
+  Workers:     1
+  Estimated:   ~6-8 hours total
+
+  Starting experiments...
+
+
+[1/9] Running: cpg_baseline
+  cpg_baseline: already complete (30 runs in .pkl)
+
+[2/9] Running: cpgnn_flat
+  cpgnn_flat: already complete (30 runs in .pkl)
+
+[3/9] Running: cpgnn_frozen
+  cpgnn_frozen: already complete (30 runs in .pkl)
+
+[4/9] Running: cpg_hill
+  cpg_hill: already complete (30 runs in .pkl)
+
+[5/9] Running: cpg_mixed
+  cpg_mixed: already complete (30 runs in .pkl)
+
+[6/9] Running: cpgnn_mixed
+  cpgnn_mixed: already complete (30 runs in .pkl)
+
+[7/9] Running: cpgnn_2x_budget
+  cpgnn_2x_budget: already complete (30 runs in .pkl)
+
+[8/9] Running: cpgnn_random_init
+  cpgnn_random_init:   0%|          | 0/5 [00:00<?, ?run/s]  cpgnn_random_init:  20%|##        | 1/5 [02:46<11:06, 166.71s/run]  cpgnn_random_init:  40%|####      | 2/5 [07:25<11:37, 232.45s/run]  cpgnn_random_init:  60%|######    | 3/5 [12:07<08:30, 255.12s/run]  cpgnn_random_init:  80%|########  | 4/5 [16:51<04:26, 266.74s/run]  cpgnn_random_init: 100%|##########| 5/5 [21:32<00:00, 271.83s/run]  cpgnn_random_init: 100%|##########| 5/5 [21:32<00:00, 258.54s/run]
+  cpgnn_random_init: 30/30 runs OK | mean=889.24 ± 265.50 | best=1369.66 worst=505.11 | 1293s
+
+[9/9] Running: cpgnn_high_mutation
+  Loaded 10 best chromosomes from 'cpg_baseline' (fitness range: 901.39 – 1286.11)
+  Seeded CPG+NN population (100 individuals) from 10 CPG templates
+  cpgnn_high_mutation:   0%|          | 0/30 [00:00<?, ?run/s]  cpgnn_high_mutation:   3%|3         | 1/30 [04:38<2:14:48, 278.90s/run]  cpgnn_high_mutation:   7%|6         | 2/30 [09:17<2:10:06, 278.79s/run]  cpgnn_high_mutation:  10%|#         | 3/30 [13:55<2:05:14, 278.31s/run]  cpgnn_high_mutation:  13%|#3        | 4/30 [18:33<2:00:32, 278.18s/run]  cpgnn_high_mutation:  17%|#6        | 5/30 [23:12<1:56:07, 278.70s/run]  cpgnn_high_mutation:  20%|##        | 6/30 [27:51<1:51:25, 278.55s/run]  cpgnn_high_mutation:  23%|##3       | 7/30 [32:27<1:46:29, 277.82s/run]  cpgnn_high_mutation:  27%|##6       | 8/30 [37:03<1:41:41, 277.36s/run]  cpgnn_high_mutation:  30%|###       | 9/30 [41:41<1:37:03, 277.32s/run]  cpgnn_high_mutation:  33%|###3      | 10/30 [46:18<1:32:24, 277.21s/run]  cpgnn_high_mutation:  37%|###6      | 11/30 [50:54<1:27:45, 277.11s/run]  cpgnn_high_mutation:  40%|####      | 12/30 [55:51<1:24:52, 282.90s/run]  cpgnn_high_mutation:  43%|####3     | 13/30 [1:01:10<1:23:15, 293.86s/run]  cpgnn_high_mutation:  47%|####6     | 14/30 [1:05:45<1:16:52, 288.29s/run]  cpgnn_high_mutation:  50%|#####     | 15/30 [1:10:20<1:11:06, 284.40s/run]  cpgnn_high_mutation:  53%|#####3    | 16/30 [1:14:56<1:05:44, 281.74s/run]  cpgnn_high_mutation:  57%|#####6    | 17/30 [1:19:31<1:00:35, 279.64s/run]  cpgnn_high_mutation:  60%|######    | 18/30 [1:24:06<55:40, 278.34s/run]    cpgnn_high_mutation:  63%|######3   | 19/30 [1:28:40<50:48, 277.15s/run]  cpgnn_high_mutation:  67%|######6   | 20/30 [1:33:15<46:04, 276.47s/run]  cpgnn_high_mutation:  70%|#######   | 21/30 [1:37:50<41:22, 275.82s/run]  cpgnn_high_mutation:  73%|#######3  | 22/30 [1:42:25<36:44, 275.61s/run]  cpgnn_high_mutation:  77%|#######6  | 23/30 [1:46:59<32:05, 275.04s/run]  cpgnn_high_mutation:  80%|########  | 24/30 [1:51:33<27:29, 274.88s/run]  cpgnn_high_mutation:  83%|########3 | 25/30 [1:56:09<22:56, 275.32s/run]  cpgnn_high_mutation:  87%|########6 | 26/30 [2:00:44<18:20, 275.13s/run]  cpgnn_high_mutation:  90%|######### | 27/30 [2:05:19<13:45, 275.05s/run]  cpgnn_high_mutation:  93%|#########3| 28/30 [2:09:54<09:10, 275.02s/run]  cpgnn_high_mutation:  97%|#########6| 29/30 [2:14:29<04:34, 274.98s/run]  cpgnn_high_mutation: 100%|##########| 30/30 [2:19:03<00:00, 274.79s/run]  cpgnn_high_mutation: 100%|##########| 30/30 [2:19:03<00:00, 278.12s/run]
+  cpgnn_high_mutation: 30/30 runs OK | mean=992.51 ± 168.65 | best=1455.23 worst=768.45 | 8344s
+
+============================================================
+V2 experiments complete: 9 experiments, 9637s (2.7h)
+============================================================
+
+  Total time: 9637s (2.7h)
+
+================================================================================
+Experiment                  Ctrl  Runs     Mean     Std     Best    Worst
+--------------------------------------------------------------------------------
+cpg_baseline                 cpg    30   889.31  108.71  1286.11   743.08
+cpg_hill                     cpg    30   595.03  169.06   994.23   222.07
+cpg_mixed                    cpg    30   719.18   64.72   784.21   521.06
+cpgnn_2x_budget           cpg_nn    30  1191.00  195.42  1613.36   880.57
+cpgnn_flat                cpg_nn    30   948.79   98.56  1251.24   813.98
+cpgnn_frozen              cpg_nn    30  1024.21  170.84  1439.88   739.93
+cpgnn_high_mutation       cpg_nn    30   992.51  168.65  1455.23   768.45
+cpgnn_mixed               cpg_nn    30   701.25  126.07  1071.00   358.02
+cpgnn_random_init         cpg_nn    30   889.24  265.50  1369.66   505.11
+================================================================================
+
+
+  Running validation and risk checks...
+
+
+============================================================
+  STRIDE Phase A — V2 Experiment Validation
+============================================================
+
+Experiment                 Exists   Runs   NaN      Mean      Best     Worst         Conv
+------------------------------------------------------------------------------------------
+cpg_baseline                   OK  30/30    OK    889.31   1286.11    743.08      75 gens
+cpg_hill                       OK  30/30    OK    595.03    994.23    222.07      75 gens
+cpg_mixed                      OK  30/30    OK    719.18    784.21    521.06      75 gens
+cpgnn_flat                     OK  30/30    OK    948.79   1251.24    813.98      75 gens
+cpgnn_mixed                    OK  30/30    OK    701.25   1071.00    358.02      75 gens
+cpgnn_frozen                   OK  30/30    OK   1024.21   1439.88    739.93      75 gens
+cpgnn_high_mutation            OK  30/30    OK    992.51   1455.23    768.45      75 gens
+cpgnn_2x_budget                OK  30/30    OK   1191.00   1613.36    880.57     200 gens
+cpgnn_random_init              OK  30/30    OK    889.24   1369.66    505.11      75 gens
+------------------------------------------------------------------------------------------
+
+--- Targeted Checks ---
+  [OK] CPG baseline mean = 889.31 >= 300
+  [WARN] Frozen-NN (1024.21) differs from CPG (889.31) by 15.2%
+  [OK] Seeded gen-1 (649.48) vs random gen-1 (286.19) — ratio 2.3x
+
+============================================================
+  Experiments: 9/9 available
+  STATUS: ALL CHECKS PASSED
+============================================================
+
+============================================================
+  RISK 1 CHECK: CPG Sanity Test
+============================================================
+  Sine baseline mean:  746.78
+  CPG baseline mean:   889.31 ± 108.71
+  CPG baseline best:   1286.11
+  CPG baseline worst:  743.08
+
+  [PASS] CPG mean (889.31) >= sine mean (746.78)
+
+============================================================
+  RISK 2 CHECK: Does the NN Learn Anything?
+============================================================
+  cpgnn_flat mean:     948.79 ± 98.56
+  cpgnn_frozen mean:   1024.21 ± 170.84
+  Mann-Whitney p-value: 0.0933
+Traceback (most recent call last):
+  File "C:\Users\xplod\Videos\FSWD\stride\run_phase_a.py", line 109, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\xplod\Videos\FSWD\stride\run_phase_a.py", line 104, in main
+    run_validation(run_risk_checks=True)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\xplod\Videos\FSWD\stride\experiments\validate_v2.py", line 430, in run_validation
+    risk_2 = risk_check_2(
+        all_data.get("cpgnn_flat"),
+        all_data.get("cpgnn_frozen"),
+        all_data.get("cpgnn_mixed"),
+    )
+  File "C:\Users\xplod\Videos\FSWD\stride\experiments\validate_v2.py", line 211, in risk_check_2
+    print(f"\n  [INFO] cpgnn_flat \u2248 cpgnn_frozen on flat terrain (p={p_value:.4f})")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\xplod\miniconda3\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2248' in position 22: character maps to <undefined>

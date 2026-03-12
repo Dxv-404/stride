@@ -1,0 +1,29 @@
+============================================================
+  STRIDE Phase 3 Subset Runner
+  Experiments: crossover_high
+  (1 experiments × 30 runs)
+============================================================
+
+--- [1/1] crossover_high ---
+  crossover_high: Resuming from run 15/30
+    Run 16/30: fitness=532.99 (281s)
+    Run 17/30: fitness=893.47 (292s)
+    Run 18/30: fitness=824.97 (286s)
+    Run 19/30: fitness=708.01 (282s)
+    Run 20/30: fitness=755.30 (286s)
+    Run 21/30: fitness=790.21 (289s)
+    Run 22/30: fitness=839.38 (286s)
+    Run 23/30: fitness=855.03 (285s)
+    Run 24/30: fitness=603.29 (284s)
+    Run 25/30: fitness=686.58 (288s)
+    Run 26/30: fitness=867.60 (284s)
+    Run 27/30: fitness=782.68 (293s)
+    Run 28/30: fitness=922.48 (282s)
+    Run 29/30: fitness=720.95 (393s)
+    Run 30/30: fitness=851.53 (407s)
+  crossover_high: 30/30 runs | mean=796.24 +/- 110.70 | best=1007.06
+  Time for crossover_high: 4517s (1.3h)
+
+============================================================
+  SUBSET COMPLETE in 4517s (1.3h)
+============================================================

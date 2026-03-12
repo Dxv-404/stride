@@ -1,0 +1,2 @@
+name,baseline_mean,variant_mean,diff,W_statistic,p_value,significance,cohens_d,rank_biserial_r
+crossover_high,746.7760,796.2368,49.4608,-1.9959,0.0459,*,0.3935,0.3000

@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# OS artifacts
+nul
+.DS_Store
+Thumbs.db
+
+# Large source assets (optimized copies live in web/public/)
+assets/room/
+assets/tv/
+
+# Experiment pickle data (too large for GitHub)
+experiments/results/*.pkl
+experiments/results/*.pkl.bak
+experiments/results/old_physics_backup/
+
+# LaTeX build artifacts
+report/*.aux
+report/*.log
+report/*.out
+report/figures/
+report/figures.rar

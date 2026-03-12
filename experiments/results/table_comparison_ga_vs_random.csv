@@ -1,0 +1,2 @@
+name,baseline_mean,variant_mean,diff,W_statistic,p_value,significance,cohens_d,rank_biserial_r
+random_search,746.7760,613.7649,-133.0111,4.2431,0.0000,***,-1.2064,-0.6378

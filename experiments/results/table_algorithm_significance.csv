@@ -1,0 +1,11 @@
+Comparison,U_stat,p_value,Cohen_d,Effect,Winner
+GA (Baseline) vs CMA-ES,278,0.011227,-0.5184,medium,CMA-ES
+GA (Baseline) vs DE,589,0.040592,0.5211,medium,GA (Baseline)
+GA (Baseline) vs PSO,378,0.290465,-0.1996,negligible,PSO
+GA (Baseline) vs Random Search,737,0.000023,1.2064,large,GA (Baseline)
+CMA-ES vs DE,750,0.000010,1.2565,large,CMA-ES
+CMA-ES vs PSO,537,0.200949,0.3330,small,CMA-ES
+CMA-ES vs Random Search,854,0.000000,2.2097,large,CMA-ES
+DE vs PSO,243,0.002266,-0.8061,large,PSO
+DE vs Random Search,633,0.006972,0.8258,large,DE
+PSO vs Random Search,787,0.000001,1.6001,large,PSO

@@ -1,0 +1,132 @@
+
+============================================================
+Experiment run started: 2026-02-27 03:46:39
+Priority group: ['baseline', 'random_search', 'roulette_selection', 'rank_selection', 'mutation_low', 'mutation_high', 'mutation_adaptive', 'no_elitism', 'high_elitism']
+Workers: 15
+============================================================
+
+[1/9] Running: baseline
+  Config: pop=100, gen=75, sel=tournament, mut=0.05
+  baseline: 30/30 runs OK | mean=154.78 ± 15.17 | best=198.40 worst=134.93 | 408s
+
+[2/9] Running: random_search
+  Config: pop=100, gen=75, sel=tournament, mut=0.05
+  random_search: 30/30 runs OK | mean=128.38 ± 6.15 | best=138.36 worst=116.70 | 275s
+
+[3/9] Running: roulette_selection
+  Config: pop=100, gen=75, sel=roulette, mut=0.05
+  roulette_selection: 30/30 runs OK | mean=143.70 ± 12.02 | best=186.67 worst=131.91 | 346s
+
+[4/9] Running: rank_selection
+  Config: pop=100, gen=75, sel=rank, mut=0.05
+  rank_selection: 30/30 runs OK | mean=151.67 ± 20.15 | best=225.50 worst=130.21 | 363s
+
+[5/9] Running: mutation_low
+  Config: pop=100, gen=75, sel=tournament, mut=0.01
+  mutation_low: 30/30 runs OK | mean=139.62 ± 12.52 | best=183.21 worst=120.92 | 518s
+
+[6/9] Running: mutation_high
+  Config: pop=100, gen=75, sel=tournament, mut=0.1
+  mutation_high: 30/30 runs OK | mean=151.38 ± 16.94 | best=217.11 worst=136.42 | 365s
+
+[7/9] Running: mutation_adaptive
+  Config: pop=100, gen=75, sel=tournament, mut=adaptive
+  mutation_adaptive: 30/30 runs OK | mean=156.21 ± 15.92 | best=203.29 worst=134.22 | 364s
+
+[8/9] Running: no_elitism
+  Config: pop=100, gen=75, sel=tournament, mut=0.05
+
+============================================================
+Experiment run started: 2026-02-27 04:34:20
+Priority group: ['baseline', 'random_search', 'roulette_selection', 'rank_selection', 'mutation_low', 'mutation_high', 'mutation_adaptive', 'no_elitism', 'high_elitism']
+Workers: 15
+============================================================
+
+[1/9] Running: baseline
+  Config: pop=100, gen=75, sel=tournament, mut=0.05
+
+============================================================
+Experiment run started: 2026-02-27 04:34:53
+Priority group: ['baseline', 'random_search', 'roulette_selection', 'rank_selection', 'mutation_low', 'mutation_high', 'mutation_adaptive', 'no_elitism', 'high_elitism']
+Workers: 15
+============================================================
+
+[1/9] Running: baseline
+  Config: pop=100, gen=75, sel=tournament, mut=0.05
+  baseline: already complete (30 runs in .pkl)
+
+[2/9] Running: random_search
+  Config: pop=100, gen=75, sel=tournament, mut=0.05
+  random_search: already complete (30 runs in .pkl)
+
+[3/9] Running: roulette_selection
+  Config: pop=100, gen=75, sel=roulette, mut=0.05
+  roulette_selection: already complete (30 runs in .pkl)
+
+[4/9] Running: rank_selection
+  Config: pop=100, gen=75, sel=rank, mut=0.05
+  rank_selection: already complete (30 runs in .pkl)
+
+[5/9] Running: mutation_low
+  Config: pop=100, gen=75, sel=tournament, mut=0.01
+  mutation_low: already complete (30 runs in .pkl)
+
+[6/9] Running: mutation_high
+  Config: pop=100, gen=75, sel=tournament, mut=0.1
+  mutation_high: already complete (30 runs in .pkl)
+
+[7/9] Running: mutation_adaptive
+  Config: pop=100, gen=75, sel=tournament, mut=adaptive
+  mutation_adaptive: already complete (30 runs in .pkl)
+
+[8/9] Running: no_elitism
+  Config: pop=100, gen=75, sel=tournament, mut=0.05
+  no_elitism: resuming from run 10/30
+  no_elitism: 30/30 runs OK | mean=147.85 ± 19.05 | best=203.09 worst=124.57 | 261s
+
+[9/9] Running: high_elitism
+  Config: pop=100, gen=75, sel=tournament, mut=0.05
+  high_elitism: 30/30 runs OK | mean=157.45 ± 20.35 | best=216.89 worst=131.87 | 379s
+
+============================================================
+All experiments complete: 9 experiments, 641s (0.2h)
+============================================================
+
+============================================================
+Experiment run started: 2026-02-27 05:35:08
+Priority group: ['indirect_encoding', 'hill_terrain', 'mixed_terrain', 'crossover_low', 'crossover_high']
+Workers: 15
+============================================================
+
+[1/5] Running: indirect_encoding
+  Config: pop=100, gen=75, sel=tournament, mut=0.05
+  indirect_encoding: 30/30 runs OK | mean=120.06 ± 26.79 | best=189.39 worst=91.29 | 370s
+
+[2/5] Running: hill_terrain
+  Config: pop=100, gen=75, sel=tournament, mut=0.05
+  hill_terrain: 30/30 runs OK | mean=150.37 ± 15.39 | best=185.45 worst=128.89 | 390s
+
+[3/5] Running: mixed_terrain
+  Config: pop=100, gen=75, sel=tournament, mut=0.05
+  mixed_terrain: 30/30 runs OK | mean=143.56 ± 16.31 | best=197.59 worst=122.96 | 2136s
+
+[4/5] Running: crossover_low
+  Config: pop=100, gen=75, sel=tournament, mut=0.05
+  crossover_low: 30/30 runs OK | mean=153.13 ± 19.55 | best=220.28 worst=124.93 | 376s
+
+[5/5] Running: crossover_high
+  Config: pop=100, gen=75, sel=tournament, mut=0.05
+  crossover_high: 30/30 runs OK | mean=153.52 ± 19.15 | best=211.46 worst=123.51 | 367s
+
+============================================================
+All experiments complete: 5 experiments, 3639s (1.0h)
+============================================================
+
+============================================================
+Experiment run started: 2026-02-27 12:50:09
+Priority group: ['baseline', 'random_search']
+Workers: 14
+============================================================
+
+[1/2] Running: baseline
+  Config: pop=100, gen=75, sel=tournament, mut=0.05

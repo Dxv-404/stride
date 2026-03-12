@@ -1,0 +1,2 @@
+comparison,seeded_mean,random_mean,p_value,cohens_d,significance,gen1_seeded_mean,gen1_random_mean
+seeded_vs_random,948.7878,889.2393,0.0287,-0.2924,*,649.4759,286.1933

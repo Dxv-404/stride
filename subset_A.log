@@ -1,0 +1,54 @@
+============================================================
+  STRIDE Phase 3 Subset Runner
+  Experiments: mutation_high, mutation_adaptive, no_elitism, high_elitism
+  (4 experiments × 30 runs)
+============================================================
+
+--- [1/4] mutation_high ---
+    Run 1/30: fitness=842.00 (389s)
+    Run 2/30: fitness=831.55 (418s)
+    Run 3/30: fitness=735.85 (384s)
+    Run 4/30: fitness=935.12 (347s)
+    Run 5/30: fitness=893.37 (324s)
+    Run 6/30: fitness=784.45 (326s)
+    Run 7/30: fitness=846.21 (331s)
+    Run 8/30: fitness=784.56 (326s)
+    Run 9/30: fitness=1072.21 (331s)
+    Run 10/30: fitness=933.56 (331s)
+    Run 11/30: fitness=908.45 (330s)
+    Run 12/30: fitness=792.53 (327s)
+    Run 13/30: fitness=780.66 (344s)
+    Run 14/30: fitness=813.01 (331s)
+    Run 15/30: fitness=751.30 (329s)
+    Run 16/30: fitness=667.32 (334s)
+    Run 17/30: fitness=624.36 (624s)
+    Run 18/30: fitness=915.98 (1089s)
+    Run 19/30: fitness=849.74 (947s)
+    Run 20/30: fitness=868.29 (273s)
+    Run 21/30: fitness=775.89 (274s)
+    Run 22/30: fitness=763.66 (273s)
+    Run 23/30: fitness=878.08 (291s)
+    Run 24/30: fitness=688.15 (274s)
+    Run 25/30: fitness=800.90 (275s)
+    Run 26/30: fitness=761.11 (274s)
+    Run 27/30: fitness=939.35 (273s)
+    Run 28/30: fitness=727.66 (272s)
+    Run 29/30: fitness=697.72 (274s)
+    Run 30/30: fitness=846.99 (272s)
+  mutation_high: 30/30 runs | mean=817.00 +/- 93.60 | best=1072.21
+  Time for mutation_high: 11189s (3.1h)
+
+--- [2/4] mutation_adaptive ---
+    Run 1/30: fitness=722.27 (273s)
+    Run 2/30: fitness=829.32 (274s)
+Gen 74: diversity collapsed to 0.0092
+    Run 3/30: fitness=876.87 (274s)
+    Run 4/30: fitness=778.60 (274s)
+    Run 5/30: fitness=821.09 (274s)
+    Run 6/30: fitness=861.59 (279s)
+    Run 7/30: fitness=879.84 (298s)
+    Run 8/30: fitness=824.42 (295s)
+    Run 9/30: fitness=909.43 (291s)
+Gen 74: diversity collapsed to 0.0100
+    Run 10/30: fitness=780.33 (286s)
+    Run 11/30: fitness=836.69 (290s)

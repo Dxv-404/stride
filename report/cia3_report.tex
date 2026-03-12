@@ -1,0 +1,263 @@
+\documentclass[11pt,a4paper]{article}
+
+% ---------- packages ----------
+\usepackage[top=0.85in, bottom=0.85in, left=0.85in, right=0.85in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+
+% ---------- compact formatting ----------
+\setlength{\parskip}{4pt}
+\setlength{\parindent}{0pt}
+\renewcommand{\baselinestretch}{1.05}
+\captionsetup{font=small, labelfont=bf}
+
+% ---------- title ----------
+\title{\Large\textbf{Optimizing Bipedal Locomotion Control\\Using Genetic Algorithms}}
+\author{Dev Krishna\\[2pt]
+{\small Registration No: 23112015}\\
+{\small 3rd Year B.Sc.\ Data Science, CHRIST (Deemed to be University), Pune Lavasa Campus}\\
+{\small Course: Optimisation Techniques (CIA-3)}}
+\date{\small February 2026}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+% ===================================================================
+\section{Introduction}
+% ===================================================================
+
+The goal of this project is to make a simulated 2D stick-figure creature learn to walk using a Genetic Algorithm (GA). The creature has six motorized joints (hips, knees, and shoulders on both sides), and each joint is controlled by a simple sine-wave signal. Each sine wave has three settings: how far the joint swings (amplitude), how fast it swings (frequency), and when it starts swinging (phase). Since there are six joints with three settings each, we have 18 numbers to optimize. The aim is to find the combination of these 18 values that makes the creature walk the farthest in a 15-second physics simulation.
+
+This is a difficult optimization problem for two main reasons. First, we cannot compute gradients because the fitness of a solution depends on a full physics simulation with collisions, friction, and gravity. A small change in one parameter can cause a completely different walking behavior. Second, the search space has many local optima: there are many different ways the creature can move (hopping, shuffling, crawling), but only a few of these lead to good forward walking.
+
+GAs are well suited for this kind of problem~\cite{katoch2021}. They work with a population of candidate solutions and use operators like selection, crossover, and mutation to search the space without needing gradients. In this report, we describe how we set up the GA, explain the fitness function and all control parameters, and show results from 30 independent runs. We also compare the GA with three other optimization methods: Differential Evolution (DE), Particle Swarm Optimization (PSO), and the Covariance Matrix Adaptation Evolution Strategy (CMA-ES)~\cite{hansen2016}.
+
+% ===================================================================
+\section{Literature Review}
+% ===================================================================
+
+Genetic Algorithms have been widely used for optimization tasks across many fields. Katoch et al.~\cite{katoch2021} provide a detailed review of GA theory and applications, covering areas like engineering design, scheduling, and parameter tuning. They note that the performance of a GA depends heavily on the choice of selection method, crossover operator, and mutation rate, and that no single configuration works best for all problems.
+
+In the area of robot locomotion, Szabo~\cite{szabo2023} applied a GA to teach a simulated biped robot to walk and recover from falls. The study showed that the GA was able to find stable walking gaits through evolution alone, without any manual tuning of the joint controllers. Similarly, Meng et al.~\cite{meng2024} used a GA to optimize PID controller parameters for a quadruped soft robot. Their results showed that GA-tuned controllers produced smoother and more energy-efficient walking compared to hand-tuned ones.
+
+The design of virtual creatures using evolutionary methods has also been studied extensively. Lai et al.~\cite{lai2021} present a review of virtual creature morphology, covering how different body structures and encodings affect the quality of evolved locomotion. Veenstra and Glette~\cite{veenstra2020} specifically compared direct and indirect encodings for 2D virtual creatures and found that the choice of encoding affects both the diversity of solutions and the final fitness values.
+
+When comparing different optimization algorithms, Piotrowski et al.~\cite{piotrowski2023} conducted a large-scale comparison between PSO and DE across many benchmark problems and engineering tasks. They found that neither algorithm is universally better; the best choice depends on the problem characteristics. CMA-ES, described in detail by Hansen~\cite{hansen2016}, is often considered a strong method for continuous optimization because it adapts its search distribution to the shape of the fitness landscape. However, it can be slower to converge when the number of dimensions is large.
+
+Based on this literature, we chose to implement a standard GA with tournament selection as our primary method and compare it against DE, PSO, CMA-ES, and random search on the bipedal walking task.
+
+% ===================================================================
+\section{Methodology}
+% ===================================================================
+
+\subsection{Problem Formulation}
+
+Each candidate solution is represented as a chromosome $\mathbf{x} \in [0, 1]^{18}$, which is a vector of 18 numbers between 0 and 1. These 18 genes are split into six groups of three, one group per joint. Each group is decoded into the amplitude, frequency, and phase of a sine-wave controller for that joint:
+%
+\begin{equation}
+\theta_j(t) = A_j \sin\!\big(2\pi\,\omega_j\, t + \phi_j\big), \quad j = 1, \ldots, 6
+\label{eq:motor}
+\end{equation}
+%
+where $A_j \in [0,\, \pi/2]$\,rad controls how far the joint swings, $\omega_j \in [0.3,\, 3.0]$\,Hz controls how fast it oscillates, and $\phi_j \in [0,\, 2\pi]$\,rad sets the timing offset. At each simulation step, a PD (proportional-derivative) controller drives the joint toward the target angle given by Equation~\ref{eq:motor}.
+
+To evaluate a chromosome, we run a 15-second physics simulation and compute the following fitness score:
+%
+\begin{equation}
+F(\mathbf{x}) \;=\; d \;-\; \alpha\, E \;-\; \beta\, C \;+\; \gamma\, U \;+\; B_{\mathrm{gait}} \;+\; B_{\mathrm{vel}}
+\label{eq:fitness}
+\end{equation}
+%
+The terms are:
+\begin{itemize}[nosep,topsep=2pt]
+    \item $d$: horizontal distance traveled by the torso (the main objective).
+    \item $E$: average torque used per step (penalizes wasteful movement).
+    \item $C$: number of steps where the torso touches the ground (penalizes falling).
+    \item $U = \langle\cos\theta_{\mathrm{torso}}\rangle$: average uprightness over the simulation (rewards staying upright).
+    \item $B_{\mathrm{gait}}$: bonus for coordinated leg movement, specifically rewarding anti-phase hip oscillation (left and right legs roughly $\pi$ apart), hip-knee coupling, and frequency matching between joints on the same leg.
+    \item $B_{\mathrm{vel}}$: bonus for consistent forward movement, proportional to the fraction of frames where the creature moves forward.
+\end{itemize}
+The weight constants are $\alpha = 0.1$, $\beta = 0.5$, and $\gamma = 10.0$.
+
+\subsection{Creature Model}
+
+The creature is a 2D rigid-body model simulated using the Pymunk physics engine at 60 frames per second with gravity of $981$\,cm/s$^2$ pointing downward. It has a rectangular torso ($60 \times 20$\,pixels) with four limbs attached. Each leg consists of an upper segment (30\,px) and a lower segment (25\,px) ending in a flat foot ($20 \times 5$\,px). The arms have the same structure, but their elbows use passive springs (stiffness = 5000, damping = 70) instead of motors. So there are six motorized joints in total and two spring-based joints.
+
+\subsection{Genetic Algorithm}
+
+We use a generational GA, meaning the entire population is replaced each generation (except for the elite individuals). Algorithm~\ref{alg:ga} shows the pseudocode.
+
+\begin{algorithm}[H]
+\caption{Generational Genetic Algorithm}\label{alg:ga}
+\small
+\begin{algorithmic}[1]
+\State Create initial population $P_0$ of $N$ random chromosomes in $[0,1]^{18}$
+\For{generation $g = 1$ to $G_{\max}$}
+    \State Evaluate fitness $F(\mathbf{x}_i)$ for every individual in $P_{g-1}$
+    \State Copy the top $e\%$ individuals directly into $P_g$ \hfill\textit{(elitism)}
+    \While{$|P_g| < N$}
+        \State Pick two parents using tournament selection ($k{=}3$)
+        \State With probability $p_c$: do single-point crossover to create two children
+        \State For each gene, with probability $p_m$: add Gaussian noise $\mathcal{N}(0,\sigma^2)$, clamp to $[0,1]$
+        \State Add children to $P_g$
+    \EndWhile
+\EndFor
+\State \Return the best individual found across all generations
+\end{algorithmic}
+\end{algorithm}
+
+\textbf{Selection.} Tournament selection picks $k = 3$ random individuals from the population and selects the one with the highest fitness as a parent. This gives a good balance between picking strong individuals and keeping variety in the population.
+
+\textbf{Crossover.} Single-point crossover picks a random position along the 18-gene chromosome and swaps everything after that point between two parents. This is applied with probability $p_c$.
+
+\textbf{Mutation.} Each gene has a $p_m$ chance of being changed by adding a small random value from a Gaussian distribution with standard deviation $\sigma$. The result is clamped to $[0, 1]$ so it stays valid.
+
+\textbf{Elitism.} The top $e\%$ of the current population (5 out of 100 individuals) are copied into the next generation without any changes. This ensures we never lose our best solution.
+
+% ===================================================================
+\section{Implementation and Control Parameters}
+% ===================================================================
+
+The system was built in Python using NumPy for numerical operations and Pymunk for the physics simulation. Table~\ref{tab:params} lists all the GA control parameters we used.
+
+\begin{table}[H]
+\centering
+\caption{GA control parameters (baseline configuration).}
+\label{tab:params}
+\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Parameter} & \textbf{Value} & \textbf{Description} \\
+\midrule
+Population size ($N$)     & 100   & Individuals per generation \\
+Generations ($G_{\max}$)  & 75    & Maximum number of generations \\
+Crossover rate ($p_c$)    & 0.80  & Probability of applying crossover \\
+Mutation rate ($p_m$)     & 0.05  & Per-gene mutation probability \\
+Mutation std.\ dev.\ ($\sigma$)  & 0.10  & Size of Gaussian perturbation \\
+Tournament size ($k$)     & 3     & Candidates per tournament round \\
+Elitism rate ($e$)        & 5\%   & Top fraction kept unchanged \\
+Chromosome length         & 18    & 6 joints $\times$ 3 parameters \\
+Simulation duration       & 15\,s & Length of each fitness evaluation \\
+Simulation frequency      & 60\,Hz & Physics timestep rate \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+We chose a population of 100 because it gives enough variety to explore an 18-dimensional space while keeping the computation manageable (each evaluation takes about 4 seconds). The crossover rate of 0.80 is within the standard recommended range of 0.6 to 0.9~\cite{katoch2021}. A mutation rate of 0.05 with $\sigma = 0.1$ allows small improvements to existing solutions without destroying good ones. The 5\% elitism (5 individuals) guarantees that the best solution is never lost between generations.
+
+To see how the GA compares with other methods, we also ran four other algorithms with the same budget of 7\,500 total evaluations (100 population $\times$ 75 generations) and the same 30 random seeds (42 through 71):
+\begin{itemize}[nosep,topsep=2pt]
+    \item \textbf{Random Search}: 7\,500 chromosomes sampled uniformly at random.
+    \item \textbf{Differential Evolution (DE)}: DE/rand/1/bin with $F = 0.8$, $CR = 0.7$.
+    \item \textbf{Particle Swarm Optimization (PSO)}: $w = 0.7$, $c_1 = 1.5$, $c_2 = 1.5$.
+    \item \textbf{CMA-ES}: default settings from Hansen~\cite{hansen2016}.
+\end{itemize}
+
+% ===================================================================
+\section{Experiment Results}
+% ===================================================================
+
+\subsection{Baseline GA Performance}
+
+We ran the GA 30 times with different random seeds (42 through 71). Table~\ref{tab:results} shows the summary statistics. The mean fitness of 746.78 means that on average, the GA produces walkers that cover a good distance. The best run reached a fitness of 1093.82, which corresponds to a creature that walks forward steadily for the full 15 seconds. The worst run (472.52) still moved forward but fell down several times during the simulation. The standard deviation of 135.22 shows that results vary quite a bit across runs, which is expected given the many local optima in the search space.
+
+\begin{table}[H]
+\centering
+\caption{Baseline GA performance over 30 independent runs.}
+\label{tab:results}
+\small
+\begin{tabular}{@{}lr@{}}
+\toprule
+\textbf{Statistic} & \textbf{Value} \\
+\midrule
+Number of runs      & 30 \\
+Mean fitness        & 746.78 \\
+Median fitness      & 754.74 \\
+Best fitness        & 1093.82 \\
+Worst fitness       & 472.52 \\
+Standard deviation  & 135.22 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Looking at how the best run improved over time: fitness went from 375 at generation 1 to 697 by generation 20, showing fast early progress. After that, improvement slowed down. A late jump from 850 at generation 57 to 1094 at generation 70 suggests that crossover combined two partial walking patterns into a much better gait near the end of the run.
+
+\subsection{Algorithm Comparison}
+
+Table~\ref{tab:comparison} compares all five methods using the same evaluation budget and seeds. CMA-ES got the highest mean fitness (809.41) and also the best single run (1136.19). PSO came second with a mean of 772.50, followed by the GA at 746.78. DE scored lower at 684.78, and random search was the weakest at 613.76.
+
+\begin{table}[H]
+\centering
+\caption{Comparison of optimization algorithms (30 runs each, same seeds and budget).}
+\label{tab:comparison}
+\small
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+\textbf{Algorithm} & \textbf{Mean} & \textbf{Median} & \textbf{Best} & \textbf{Worst} & \textbf{Std} \\
+\midrule
+Random Search  & 613.76 & 617.81 &  742.11 & 497.96 &  72.22 \\
+DE             & 684.78 & 658.67 &  918.80 & 526.01 &  95.30 \\
+GA (Baseline)  & 746.78 & 754.74 & 1093.82 & 472.52 & 135.22 \\
+PSO            & 772.50 & 779.26 & 1067.65 & 486.87 & 117.52 \\
+CMA-ES         & 809.41 & 819.82 & 1136.19 & 517.57 &  99.70 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+We ran Mann-Whitney~$U$ tests to check if the differences are statistically significant at the 5\% level. CMA-ES is significantly better than the GA ($p = 0.011$, Cohen's $d = 0.52$, medium effect). The GA is significantly better than both DE ($p = 0.041$, $d = 0.52$) and random search ($p < 0.001$, $d = 1.21$, large effect). The difference between GA and PSO is not statistically significant ($p = 0.29$).
+
+CMA-ES does well here because it adjusts its search distribution to match the shape of the fitness landscape, which helps in an 18-dimensional continuous space. The GA is simpler in how it searches but still finds competitive best-case solutions. We also tried increasing the GA's mutation rate from 0.05 to 0.10, which raised the mean fitness to 817.00. This was the best result among all GA variants we tested, suggesting that the default mutation rate does not explore the search space enough for this particular problem.
+
+All four evolutionary methods clearly outperform random search, confirming that structured population-based search is necessary for this problem. CMA-ES performs the best overall, but the GA with a higher mutation rate comes close. The GA is a good practical choice for this kind of problem, especially when combined with slightly higher mutation strength.
+
+% ===================================================================
+% References
+% ===================================================================
+\begin{thebibliography}{9}
+
+\bibitem{katoch2021}
+S.~Katoch, S.\,S.~Chauhan, and V.~Kumar,
+``A review on genetic algorithm: past, present, and future,''
+\textit{Multimedia Tools and Applications}, vol.~80, pp.~8091--8126, 2021.
+
+\bibitem{szabo2023}
+R.~Szabo,
+``Design approach for evolutionary techniques using genetic algorithms: application for a biped robot to learn to walk and rise after a fall,''
+\textit{Mathematics (MDPI)}, vol.~11, no.~13, article~2931, 2023.
+
+\bibitem{meng2024}
+H.~Meng, S.~Zhang, W.~Zhang, and Y.~Ren,
+``Optimizing actual PID control for walking quadruped soft robots using genetic algorithms,''
+\textit{Scientific Reports}, vol.~14, article~25946, 2024.
+
+\bibitem{lai2021}
+G.~Lai, F.\,F.~Leymarie, W.~Latham, T.~Arita, and R.~Suzuki,
+``Virtual creature morphology -- a review,''
+\textit{Computer Graphics Forum}, vol.~40, no.~2, pp.~659--681, 2021.
+
+\bibitem{veenstra2020}
+F.~Veenstra and K.~Glette,
+``How different encodings affect performance and diversification when evolving the morphology and control of 2D virtual creatures,''
+in \textit{Proc.\ Conference on Artificial Life (ALIFE)}, MIT Press, pp.~592--601, 2020.
+
+\bibitem{piotrowski2023}
+A.\,P.~Piotrowski, J.\,J.~Napiorkowski, and A.\,E.~Piotrowska,
+``Particle swarm optimization or differential evolution -- a comparison,''
+\textit{Engineering Applications of Artificial Intelligence}, vol.~121, article~106008, 2023.
+
+\bibitem{hansen2016}
+N.~Hansen,
+``The CMA evolution strategy: a tutorial,''
+\textit{arXiv preprint arXiv:1604.00772}, 2016.
+
+\end{thebibliography}
+
+\end{document}

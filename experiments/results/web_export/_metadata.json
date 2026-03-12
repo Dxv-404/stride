@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-03-08T00:39:14.955135",
+  "export_counts": {
+    "chromosomes": 4,
+    "convergence": 10,
+    "transfer": 4,
+    "push_test": 4,
+    "distributions": 10,
+    "stat_tests": 7,
+    "landscape": 4,
+    "gait": 3,
+    "nn_modulation": 6,
+    "ablation": 10
+  },
+  "source_dir": "C:\\Users\\xplod\\Videos\\FSWD\\stride\\experiments\\results",
+  "note": "Live sims use p2.js (close to pymunk). Stats from pymunk (exact)."
+}

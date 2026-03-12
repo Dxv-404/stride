@@ -1,0 +1,25 @@
+============================================================
+  STRIDE Phase 3 Subset Runner
+  Experiments: indirect_encoding, hill_terrain, mixed_terrain, crossover_low
+  (4 experiments × 30 runs)
+============================================================
+
+--- [1/4] indirect_encoding ---
+    Run 1/30: fitness=808.96 (407s)
+    Run 2/30: fitness=529.92 (405s)
+    Run 3/30: fitness=891.96 (380s)
+    Run 4/30: fitness=723.04 (347s)
+    Run 5/30: fitness=940.58 (323s)
+    Run 6/30: fitness=582.46 (328s)
+    Run 7/30: fitness=822.08 (332s)
+    Run 8/30: fitness=906.31 (328s)
+    Run 9/30: fitness=738.06 (330s)
+    Run 10/30: fitness=500.18 (328s)
+    Run 11/30: fitness=474.99 (326s)
+    Run 12/30: fitness=508.83 (327s)
+    Run 13/30: fitness=534.03 (345s)
+    Run 14/30: fitness=851.45 (329s)
+    Run 15/30: fitness=542.68 (326s)
+    Run 16/30: fitness=908.85 (338s)
+    Run 17/30: fitness=501.83 (607s)
+    Run 18/30: fitness=534.20 (1068s)

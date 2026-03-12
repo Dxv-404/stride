@@ -1,0 +1,3 @@
+name,baseline_mean,variant_mean,diff,W_statistic,p_value,significance,cohens_d,rank_biserial_r
+no_elitism,154.7847,147.8539,-6.9308,2.0698,0.0385,*,-0.3958,-0.3111
+high_elitism,154.7847,157.4497,2.6649,-0.3400,0.7338,ns,0.1460,0.0511

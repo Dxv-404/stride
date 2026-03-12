@@ -1,0 +1,9 @@
+Gen 37: diversity collapsed to 0.0099
+Gen 63: diversity collapsed to 0.0086
+Gen 70: diversity collapsed to 0.0046
+Gen 37: diversity collapsed to 0.0079
+Gen 50: diversity collapsed to 0.0078
+Gen 69: diversity collapsed to 0.0068
+Gen 47: diversity collapsed to 0.0069
+Gen 48: diversity collapsed to 0.0075
+Gen 37: diversity collapsed to 0.0091

@@ -1,0 +1,2 @@
+name,baseline_mean,variant_mean,diff,W_statistic,p_value,significance,cohens_d,rank_biserial_r
+mutation_high,746.7760,817.0013,70.2253,-2.6908,0.0071,**,0.5937,0.4044

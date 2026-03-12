@@ -1,0 +1,32 @@
+
+============================================================
+  STRIDE Phase A — V2 Experiment Pipeline
+============================================================
+
+  Experiments: 9
+  Run order:   cpg_baseline -> cpgnn_flat -> cpgnn_frozen -> cpg_hill -> cpg_mixed -> cpgnn_mixed -> cpgnn_2x_budget -> cpgnn_random_init -> cpgnn_high_mutation
+  Workers:     1
+  Estimated:   ~6-8 hours total
+
+  Starting experiments...
+
+
+[1/9] Running: cpg_baseline
+  cpg_baseline: already complete (30 runs in .pkl)
+
+[2/9] Running: cpgnn_flat
+  cpgnn_flat: already complete (30 runs in .pkl)
+
+[3/9] Running: cpgnn_frozen
+  cpgnn_frozen: already complete (30 runs in .pkl)
+
+[4/9] Running: cpg_hill
+  cpg_hill: already complete (30 runs in .pkl)
+
+[5/9] Running: cpg_mixed
+  cpg_mixed: already complete (30 runs in .pkl)
+
+[6/9] Running: cpgnn_mixed
+  Loaded 10 best chromosomes from 'cpg_baseline' (fitness range: 901.39 – 1286.11)
+  Seeded CPG+NN population (100 individuals) from 10 CPG templates
+  cpgnn_mixed:   0%|          | 0/10 [00:00<?, ?run/s]

@@ -1,0 +1,3 @@
+name,baseline_mean,variant_mean,diff,W_statistic,p_value,significance,cohens_d,rank_biserial_r
+cpg_baseline,746.7760,889.3131,142.5371,-4.5536,0.0000,***,1.1423,0.6844
+cpgnn_flat,746.7760,948.7878,202.0118,-5.4998,0.0000,***,1.6787,0.8267

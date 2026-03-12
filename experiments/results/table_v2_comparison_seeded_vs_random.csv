@@ -1,0 +1,2 @@
+name,baseline_mean,variant_mean,diff,W_statistic,p_value,significance,cohens_d,rank_biserial_r
+cpgnn_random_init,948.7878,889.2393,-59.5485,2.1881,0.0287,*,-0.2924,-0.3289

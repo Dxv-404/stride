@@ -1,0 +1,213 @@
+
+============================================================
+V2 Experiment run started: 2026-03-04 10:05:39
+Priority group: ['cpg_baseline']
+Workers: 1
+============================================================
+
+[1/1] Running: cpg_baseline
+  Config: controller=cpg, encoding=cpg, terrain=flat, seed_from=baseline, pop=100, gen=75
+
+============================================================
+V2 Experiment run started: 2026-03-04 10:16:53
+Priority group: ['cpg_baseline', 'cpgnn_flat', 'cpgnn_frozen', 'cpg_hill', 'cpg_mixed', 'cpgnn_mixed', 'cpgnn_2x_budget', 'cpgnn_random_init', 'cpgnn_high_mutation']
+Workers: 1
+============================================================
+
+[1/9] Running: cpg_baseline
+  Config: controller=cpg, encoding=cpg, terrain=flat, seed_from=baseline, pop=100, gen=75
+
+============================================================
+V2 Experiment run started: 2026-03-04 13:07:50
+Priority group: ['cpg_baseline', 'cpgnn_flat', 'cpgnn_frozen', 'cpg_hill', 'cpg_mixed', 'cpgnn_mixed', 'cpgnn_2x_budget', 'cpgnn_random_init', 'cpgnn_high_mutation']
+Workers: 1
+============================================================
+
+[1/9] Running: cpg_baseline
+  Config: controller=cpg, encoding=cpg, terrain=flat, seed_from=baseline, pop=100, gen=75
+  cpg_baseline: resuming from run 20/30
+  cpg_baseline: 30/30 runs OK | mean=842.67 ± 74.68 | best=1073.34 worst=729.96 | 14492s
+
+[2/9] Running: cpgnn_flat
+  Config: controller=cpg_nn, encoding=cpg_nn, terrain=flat, seed_from=cpg_baseline, pop=100, gen=75
+  cpg_baseline: 30/30 runs OK | mean=889.31 ± 108.71 | best=1286.11 worst=743.08 | 4423s
+
+[2/9] Running: cpgnn_flat
+  Config: controller=cpg_nn, encoding=cpg_nn, terrain=flat, seed_from=cpg_baseline, pop=100, gen=75
+  cpgnn_flat: 30/30 runs OK | mean=956.14 ± 120.60 | best=1243.60 worst=788.17 | 37956s
+
+[3/9] Running: cpgnn_frozen
+  Config: controller=cpg_nn, encoding=cpg_nn, terrain=flat, seed_from=cpg_baseline, pop=100, gen=75
+  cpgnn_flat: 30/30 runs OK | mean=948.79 ± 98.56 | best=1251.24 worst=813.98 | 37915s
+
+[3/9] Running: cpgnn_frozen
+  Config: controller=cpg_nn, encoding=cpg_nn, terrain=flat, seed_from=cpg_baseline, pop=100, gen=75
+  cpgnn_frozen: 30/30 runs OK | mean=1024.21 ± 170.84 | best=1439.88 worst=739.93 | 13822s
+
+[4/9] Running: cpg_hill
+  Config: controller=cpg, encoding=cpg, terrain=hill, seed_from=baseline, pop=100, gen=75
+  cpgnn_frozen: 30/30 runs OK | mean=1024.21 ± 170.84 | best=1439.88 worst=739.93 | 13762s
+
+[4/9] Running: cpg_hill
+  Config: controller=cpg, encoding=cpg, terrain=hill, seed_from=baseline, pop=100, gen=75
+  cpg_hill: 30/30 runs OK | mean=595.03 ± 169.06 | best=994.23 worst=222.07 | 20128s
+
+[5/9] Running: cpg_mixed
+  Config: controller=cpg, encoding=cpg, terrain=mixed, seed_from=baseline, pop=100, gen=75
+  cpg_hill: 30/30 runs OK | mean=595.03 ± 169.06 | best=994.23 worst=222.07 | 20076s
+
+[5/9] Running: cpg_mixed
+  Config: controller=cpg, encoding=cpg, terrain=mixed, seed_from=baseline, pop=100, gen=75
+  cpg_mixed: 30/30 runs OK | mean=719.18 ± 64.72 | best=784.21 worst=521.06 | 48533s
+
+[6/9] Running: cpgnn_mixed
+  Config: controller=cpg_nn, encoding=cpg_nn, terrain=mixed, seed_from=cpg_baseline, pop=100, gen=75
+  FAILED: PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\xplod\\Videos\\FSWD\\stride\\experiments\\results\\cpg_mixed_checkpoint.pkl'
+
+[6/9] Running: cpgnn_mixed
+  Config: controller=cpg_nn, encoding=cpg_nn, terrain=mixed, seed_from=cpg_baseline, pop=100, gen=75
+
+============================================================
+V2 Experiment run started: 2026-03-06 09:54:55
+Priority group: ['cpg_baseline', 'cpgnn_flat', 'cpgnn_frozen', 'cpg_hill', 'cpg_mixed', 'cpgnn_mixed', 'cpgnn_2x_budget', 'cpgnn_random_init', 'cpgnn_high_mutation']
+Workers: 1
+============================================================
+
+[1/9] Running: cpg_baseline
+  Config: controller=cpg, encoding=cpg, terrain=flat, seed_from=baseline, pop=100, gen=75
+  cpg_baseline: already complete (30 runs in .pkl)
+
+[2/9] Running: cpgnn_flat
+  Config: controller=cpg_nn, encoding=cpg_nn, terrain=flat, seed_from=cpg_baseline, pop=100, gen=75
+  cpgnn_flat: already complete (30 runs in .pkl)
+
+[3/9] Running: cpgnn_frozen
+  Config: controller=cpg_nn, encoding=cpg_nn, terrain=flat, seed_from=cpg_baseline, pop=100, gen=75
+  cpgnn_frozen: already complete (30 runs in .pkl)
+
+[4/9] Running: cpg_hill
+  Config: controller=cpg, encoding=cpg, terrain=hill, seed_from=baseline, pop=100, gen=75
+  cpg_hill: already complete (30 runs in .pkl)
+
+[5/9] Running: cpg_mixed
+  Config: controller=cpg, encoding=cpg, terrain=mixed, seed_from=baseline, pop=100, gen=75
+  cpg_mixed: already complete (30 runs in .pkl)
+
+[6/9] Running: cpgnn_mixed
+  Config: controller=cpg_nn, encoding=cpg_nn, terrain=mixed, seed_from=cpg_baseline, pop=100, gen=75
+  cpgnn_mixed: resuming from run 20/30
+
+============================================================
+V2 Experiment run started: 2026-03-06 09:59:05
+Priority group: ['cpg_baseline', 'cpgnn_flat', 'cpgnn_frozen', 'cpg_hill', 'cpg_mixed', 'cpgnn_mixed', 'cpgnn_2x_budget', 'cpgnn_random_init', 'cpgnn_high_mutation']
+Workers: 1
+============================================================
+
+[1/9] Running: cpg_baseline
+  Config: controller=cpg, encoding=cpg, terrain=flat, seed_from=baseline, pop=100, gen=75
+  cpg_baseline: already complete (30 runs in .pkl)
+
+[2/9] Running: cpgnn_flat
+  Config: controller=cpg_nn, encoding=cpg_nn, terrain=flat, seed_from=cpg_baseline, pop=100, gen=75
+  cpgnn_flat: already complete (30 runs in .pkl)
+
+[3/9] Running: cpgnn_frozen
+  Config: controller=cpg_nn, encoding=cpg_nn, terrain=flat, seed_from=cpg_baseline, pop=100, gen=75
+  cpgnn_frozen: already complete (30 runs in .pkl)
+
+[4/9] Running: cpg_hill
+  Config: controller=cpg, encoding=cpg, terrain=hill, seed_from=baseline, pop=100, gen=75
+  cpg_hill: already complete (30 runs in .pkl)
+
+[5/9] Running: cpg_mixed
+  Config: controller=cpg, encoding=cpg, terrain=mixed, seed_from=baseline, pop=100, gen=75
+  cpg_mixed: already complete (30 runs in .pkl)
+
+[6/9] Running: cpgnn_mixed
+  Config: controller=cpg_nn, encoding=cpg_nn, terrain=mixed, seed_from=cpg_baseline, pop=100, gen=75
+  cpgnn_mixed: resuming from run 20/30
+
+============================================================
+V2 Experiment run started: 2026-03-06 10:08:20
+Priority group: ['cpg_baseline', 'cpgnn_flat', 'cpgnn_frozen', 'cpg_hill', 'cpg_mixed', 'cpgnn_mixed', 'cpgnn_2x_budget', 'cpgnn_random_init', 'cpgnn_high_mutation']
+Workers: 1
+============================================================
+
+[1/9] Running: cpg_baseline
+  Config: controller=cpg, encoding=cpg, terrain=flat, seed_from=baseline, pop=100, gen=75
+  cpg_baseline: already complete (30 runs in .pkl)
+
+[2/9] Running: cpgnn_flat
+  Config: controller=cpg_nn, encoding=cpg_nn, terrain=flat, seed_from=cpg_baseline, pop=100, gen=75
+  cpgnn_flat: already complete (30 runs in .pkl)
+
+[3/9] Running: cpgnn_frozen
+  Config: controller=cpg_nn, encoding=cpg_nn, terrain=flat, seed_from=cpg_baseline, pop=100, gen=75
+  cpgnn_frozen: already complete (30 runs in .pkl)
+
+[4/9] Running: cpg_hill
+  Config: controller=cpg, encoding=cpg, terrain=hill, seed_from=baseline, pop=100, gen=75
+  cpg_hill: already complete (30 runs in .pkl)
+
+[5/9] Running: cpg_mixed
+  Config: controller=cpg, encoding=cpg, terrain=mixed, seed_from=baseline, pop=100, gen=75
+  cpg_mixed: already complete (30 runs in .pkl)
+
+[6/9] Running: cpgnn_mixed
+  Config: controller=cpg_nn, encoding=cpg_nn, terrain=mixed, seed_from=cpg_baseline, pop=100, gen=75
+  cpgnn_mixed: resuming from run 20/30
+  cpgnn_mixed: 30/30 runs OK | mean=701.25 ± 126.07 | best=1071.00 worst=358.02 | 6984s
+
+[7/9] Running: cpgnn_2x_budget
+  Config: controller=cpg_nn, encoding=cpg_nn, terrain=flat, seed_from=cpg_baseline, pop=150, gen=200
+  cpgnn_2x_budget: 30/30 runs OK | mean=1191.00 ± 195.42 | best=1613.36 worst=880.57 | 40073s
+
+[8/9] Running: cpgnn_random_init
+  Config: controller=cpg_nn, encoding=cpg_nn, terrain=flat, seed_from=none, pop=100, gen=75
+
+============================================================
+V2 Experiment run started: 2026-03-07 07:32:58
+Priority group: ['cpg_baseline', 'cpgnn_flat', 'cpgnn_frozen', 'cpg_hill', 'cpg_mixed', 'cpgnn_mixed', 'cpgnn_2x_budget', 'cpgnn_random_init', 'cpgnn_high_mutation']
+Workers: 1
+============================================================
+
+[1/9] Running: cpg_baseline
+  Config: controller=cpg, encoding=cpg, terrain=flat, seed_from=baseline, pop=100, gen=75
+  cpg_baseline: already complete (30 runs in .pkl)
+
+[2/9] Running: cpgnn_flat
+  Config: controller=cpg_nn, encoding=cpg_nn, terrain=flat, seed_from=cpg_baseline, pop=100, gen=75
+  cpgnn_flat: already complete (30 runs in .pkl)
+
+[3/9] Running: cpgnn_frozen
+  Config: controller=cpg_nn, encoding=cpg_nn, terrain=flat, seed_from=cpg_baseline, pop=100, gen=75
+  cpgnn_frozen: already complete (30 runs in .pkl)
+
+[4/9] Running: cpg_hill
+  Config: controller=cpg, encoding=cpg, terrain=hill, seed_from=baseline, pop=100, gen=75
+  cpg_hill: already complete (30 runs in .pkl)
+
+[5/9] Running: cpg_mixed
+  Config: controller=cpg, encoding=cpg, terrain=mixed, seed_from=baseline, pop=100, gen=75
+  cpg_mixed: already complete (30 runs in .pkl)
+
+[6/9] Running: cpgnn_mixed
+  Config: controller=cpg_nn, encoding=cpg_nn, terrain=mixed, seed_from=cpg_baseline, pop=100, gen=75
+  cpgnn_mixed: already complete (30 runs in .pkl)
+
+[7/9] Running: cpgnn_2x_budget
+  Config: controller=cpg_nn, encoding=cpg_nn, terrain=flat, seed_from=cpg_baseline, pop=150, gen=200
+  cpgnn_2x_budget: already complete (30 runs in .pkl)
+
+[8/9] Running: cpgnn_random_init
+  Config: controller=cpg_nn, encoding=cpg_nn, terrain=flat, seed_from=none, pop=100, gen=75
+  cpgnn_random_init: resuming from run 25/30
+  cpgnn_random_init: 30/30 runs OK | mean=889.24 ± 265.50 | best=1369.66 worst=505.11 | 1293s
+
+[9/9] Running: cpgnn_high_mutation
+  Config: controller=cpg_nn, encoding=cpg_nn, terrain=flat, seed_from=cpg_baseline, pop=100, gen=75
+  cpgnn_high_mutation: 30/30 runs OK | mean=992.51 ± 168.65 | best=1455.23 worst=768.45 | 8344s
+
+============================================================
+V2 experiments complete: 9 experiments, 9637s (2.7h)
+============================================================

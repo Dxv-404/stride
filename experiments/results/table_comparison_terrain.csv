@@ -1,0 +1,3 @@
+name,baseline_mean,variant_mean,diff,W_statistic,p_value,significance,cohens_d,rank_biserial_r
+hill_terrain,154.7847,150.3739,-4.4108,1.4637,0.1433,ns,-0.2838,-0.2200
+mixed_terrain,154.7847,143.5550,-11.2297,3.5335,0.0004,***,-0.7010,-0.5311
