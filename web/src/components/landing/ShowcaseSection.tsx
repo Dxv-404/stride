@@ -21,7 +21,7 @@ export default function ShowcaseSection({ sceneStateRef }: ShowcaseSectionProps)
   const lastChart = useRef(0)
 
   const manualOverride = useRef(false)
-  const overrideTimeout = useRef<ReturnType<typeof setTimeout>>()
+  const overrideTimeout = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
 
   // Sync activeChart from sceneState (set by scroll progress)
   // Manual dot clicks override scroll for 3 seconds

@@ -21,15 +21,12 @@ interface HumanSectionProps {
 }
 
 export default function HumanSection({ onContinue }: HumanSectionProps) {
-  const activeSection = useLandingStore((s) => s.activeSection)
   const scrollLocked = useLandingStore((s) => s.scrollLocked)
   const selectedJoint = useLandingStore((s) => s.selectedJoint)
   const jointScreenPos = useLandingStore((s) => s.jointScreenPos)
   const setSelectedJoint = useLandingStore((s) => s.setSelectedJoint)
   const requestCameraReset = useLandingStore((s) => s.requestCameraReset)
   const isDraggingJoint = useLandingStore((s) => s.isDraggingJoint)
-
-  const isActive = activeSection === 2
 
   const jointInfo = selectedJoint
     ? JOINT_DATA.find((j) => j.boneName === selectedJoint)

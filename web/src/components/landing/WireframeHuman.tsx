@@ -18,7 +18,7 @@
  * of the group's Y position. Camera/orbit must target the actual visual range.
  */
 
-import { useRef, useEffect, useState, useMemo } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import { useGLTF } from '@/hooks/useGLTF.ts'
