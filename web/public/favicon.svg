@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Solid white background prevents browser dark-mode inversion -->
+  <rect width="32" height="32" rx="6" fill="#ffffff"/>
+  <!-- Head -->
+  <circle cx="16" cy="5" r="2.5" stroke="#111" stroke-width="1.5" fill="none"/>
+  <!-- Spine -->
+  <line x1="16" y1="7.5" x2="16" y2="15" stroke="#111" stroke-width="1.5"/>
+  <!-- Arms (one forward, one back) -->
+  <polyline points="16,9.5 21,13 23.5,11" stroke="#111" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="16,9.5 10.5,12.5 8.5,15" stroke="#111" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Leading leg (forward stride) -->
+  <polyline points="16,15 22,21 24,28" stroke="#111" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Trailing leg (back stride) -->
+  <polyline points="16,15 10,22 7,28" stroke="#111" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Joint dots (accent gold, slightly larger for visibility) -->
+  <circle cx="16" cy="9.5" r="1.5" fill="#C4956A"/>
+  <circle cx="16" cy="15" r="1.5" fill="#C4956A"/>
+  <circle cx="22" cy="21" r="1.3" fill="#C4956A"/>
+  <circle cx="10" cy="22" r="1.3" fill="#C4956A"/>
+  <!-- Wireframe triangulation (visible but subtle) -->
+  <line x1="16" y1="9.5" x2="22" y2="21" stroke="#111" stroke-width="0.4" opacity="0.15"/>
+  <line x1="16" y1="9.5" x2="10" y2="22" stroke="#111" stroke-width="0.4" opacity="0.15"/>
+  <line x1="10" y1="22" x2="22" y2="21" stroke="#111" stroke-width="0.4" opacity="0.15"/>
+</svg>
