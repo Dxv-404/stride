@@ -18,6 +18,11 @@ experiments/results/*.pkl
 experiments/results/*.pkl.bak
 experiments/results/old_physics_backup/
 
+# Spec / planning docs
+*spec*.md
+*SPEC*.md
+stride_v3.md
+
 # LaTeX build artifacts
 report/*.aux
 report/*.log
