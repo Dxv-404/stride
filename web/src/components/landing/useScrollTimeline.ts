@@ -93,21 +93,17 @@ export function useScrollTimeline() {
   }, [])
 
   useEffect(() => {
-    // ── Prevent browser from restoring scroll position on reload ──
-    // Without this, Chrome restores the old scroll offset before Lenis
-    // initialises, leaving GSAP's scrubbed fromTo tweens in a stale state
-    // (e.g. hands never rendered because the playhead started past them).
-    if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'manual'
-    }
-    window.scrollTo(0, 0)
-
     // ── Lenis setup ──
     const lenis = new Lenis({
       lerp: 0.1,
       smoothWheel: true,
     })
     lenisRef.current = lenis
+
+    // Force scroll to top — the blocking script in index.html sets
+    // scrollRestoration='manual' and calls scrollTo(0,0) before the
+    // browser can restore, but we also reset Lenis here as a safeguard.
+    lenis.scrollTo(0, { immediate: true })
 
     // DEV: expose Lenis globally for testing scroll lock
     if (import.meta.env.DEV) {
@@ -120,8 +116,12 @@ export function useScrollTimeline() {
     gsap.ticker.add(lenisRaf)
     gsap.ticker.lagSmoothing(0)
 
-    // Recalculate all ScrollTrigger positions now that Lenis owns scroll
+    // Recalculate all ScrollTrigger positions now that Lenis owns scroll,
+    // then force a progress update so every scrubbed timeline (including
+    // ConnectSection's, which was created before Lenis existed) evaluates
+    // its current progress at scroll=0.
     ScrollTrigger.refresh()
+    ScrollTrigger.update()
 
     const ss = sceneStateRef.current
 

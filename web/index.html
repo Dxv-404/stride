@@ -24,6 +24,12 @@
           theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
         }
         document.documentElement.setAttribute('data-theme', theme)
+
+        // Disable browser scroll restoration — must run before the browser
+        // restores the old offset, otherwise Lenis + GSAP scrub init with
+        // a stale position and the hands animation never plays on reload.
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual'
+        window.scrollTo(0, 0)
       })()
     </script>
   </head>

@@ -129,18 +129,21 @@ export default function ConnectSection() {
       )
 
       // 0–55%: Hands slide inward from off-screen
-      // immediateRender: true ensures the "from" state is applied on
-      // creation even if the scroll position is non-zero (e.g. reload).
+      // yPercent: -50 is declared explicitly so GSAP never drops the
+      // vertical centering (translateY(-50%)) when it takes ownership of
+      // the transform property. Without this, StrictMode double-mounts
+      // can cause GSAP to lose the Y offset, pushing hands below the
+      // overflow:hidden clip boundary and making them invisible.
       tl.fromTo(
         robotHandRef.current,
-        { xPercent: -110, opacity: 0 },
-        { xPercent: 0, opacity: 1, duration: 0.55, ease: 'none', immediateRender: true },
+        { xPercent: -110, yPercent: -50, opacity: 0 },
+        { xPercent: 0, yPercent: -50, opacity: 1, duration: 0.55, ease: 'none' },
         0,
       )
       tl.fromTo(
         humanHandRef.current,
-        { xPercent: 110, opacity: 0 },
-        { xPercent: 0, opacity: 1, duration: 0.55, ease: 'none', immediateRender: true },
+        { xPercent: 110, yPercent: -50, opacity: 0 },
+        { xPercent: 0, yPercent: -50, opacity: 1, duration: 0.55, ease: 'none' },
         0,
       )
 
