@@ -134,18 +134,26 @@ export default function ConnectSection() {
       // the transform property. Without this, StrictMode double-mounts
       // can cause GSAP to lose the Y offset, pushing hands below the
       // overflow:hidden clip boundary and making them invisible.
-      tl.fromTo(
-        robotHandRef.current,
-        { xPercent: -110, yPercent: -50, opacity: 0 },
-        { xPercent: 0, yPercent: -50, opacity: 1, duration: 0.55, ease: 'none' },
-        0,
-      )
-      tl.fromTo(
-        humanHandRef.current,
-        { xPercent: 110, yPercent: -50, opacity: 0 },
-        { xPercent: 0, yPercent: -50, opacity: 1, duration: 0.55, ease: 'none' },
-        0,
-      )
+      //
+      // Null guards prevent a silent no-op if StrictMode timing leaves
+      // a ref unset (the tween would target nothing and the hand stays
+      // at opacity:0 forever).
+      if (robotHandRef.current) {
+        tl.fromTo(
+          robotHandRef.current,
+          { xPercent: -110, yPercent: -50, opacity: 0 },
+          { xPercent: 0, yPercent: -50, opacity: 1, duration: 0.55, ease: 'none' },
+          0,
+        )
+      }
+      if (humanHandRef.current) {
+        tl.fromTo(
+          humanHandRef.current,
+          { xPercent: 110, yPercent: -50, opacity: 0 },
+          { xPercent: 0, yPercent: -50, opacity: 1, duration: 0.55, ease: 'none' },
+          0,
+        )
+      }
 
       // 58–72%: STRIDE text
       tl.fromTo(
@@ -322,7 +330,13 @@ export default function ConnectSection() {
           justifyContent: 'center',
         }}
       >
-        {/* Robot hand — enters from left */}
+        {/* Robot hand — enters from left
+             width/height attributes give the browser the intrinsic aspect
+             ratio BEFORE the image loads, preventing a 0-height div that
+             would make GSAP's yPercent:-50 resolve to 0px and hide the hand.
+             loading="eager" + decoding="sync" ensure the image is decoded
+             before the first paint, and fetchPriority="high" matches the
+             <link rel="preload"> in index.html. */}
         <div
           ref={robotHandRef}
           style={{
@@ -333,11 +347,17 @@ export default function ConnectSection() {
             width: '58%',
             zIndex: 1,
             opacity: 0,
+            willChange: 'transform, opacity',
           }}
         >
           <img
-            src="/connect/robot_hand.png?v=3"
+            src="/connect/robot_hand.png"
             alt="Robot hand reaching right"
+            width={883}
+            height={1024}
+            loading="eager"
+            decoding="sync"
+            fetchPriority="high"
             style={{ width: '100%', height: 'auto', display: 'block' }}
           />
         </div>
@@ -353,11 +373,17 @@ export default function ConnectSection() {
             width: '58%',
             zIndex: 2,
             opacity: 0,
+            willChange: 'transform, opacity',
           }}
         >
           <img
-            src="/connect/human_hand.png?v=3"
+            src="/connect/human_hand.png"
             alt="Human hand reaching left"
+            width={1104}
+            height={1280}
+            loading="eager"
+            decoding="sync"
+            fetchPriority="high"
             style={{ width: '100%', height: 'auto', display: 'block' }}
           />
         </div>

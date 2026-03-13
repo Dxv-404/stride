@@ -16,6 +16,9 @@
       href="https://api.fontshare.com/v2/css?f[]=array@400,700&display=swap"
       rel="stylesheet"
     />
+    <!-- Preload Creation of Adam hand images so they're ready before GSAP animates -->
+    <link rel="preload" as="image" href="/connect/robot_hand.png" fetchpriority="high" />
+    <link rel="preload" as="image" href="/connect/human_hand.png" fetchpriority="high" />
     <!-- Prevent flash-of-wrong-theme: read localStorage before React renders -->
     <script>
       ;(function() {
