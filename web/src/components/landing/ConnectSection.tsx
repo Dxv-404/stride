@@ -109,14 +109,33 @@ export default function ConnectSection() {
         },
       )
 
-      // Master timeline scrubbed over the full section scroll
+      // ── Explicitly set initial hand positions ──
+      // gsap.set() locks in the off-screen transforms BEFORE the timeline
+      // is created. This guarantees a known starting state regardless of
+      // mount order, Lenis init timing, or ScrollTrigger.refresh() calls.
+      if (robotHandRef.current) {
+        gsap.set(robotHandRef.current, { xPercent: -110, yPercent: -50, opacity: 0 })
+      }
+      if (humanHandRef.current) {
+        gsap.set(humanHandRef.current, { xPercent: 110, yPercent: -50, opacity: 0 })
+      }
+
+      // Master timeline scrubbed over the full section scroll.
+      //
+      // NOTE: invalidateOnRefresh is deliberately OFF. It was causing an
+      // intermittent bug where ScrollTrigger.refresh() (called by
+      // useScrollTimeline after Lenis init) would re-apply the "from"
+      // values of one hand but not the other, leaving the robot hand
+      // stuck at opacity:0. The three-layer reload fix (blocking script
+      // in index.html + Lenis reset + ScrollTrigger.refresh/update)
+      // already guarantees scroll starts at 0, so invalidateOnRefresh
+      // is unnecessary.
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionEl,
           start: 'top top',
           end: 'bottom bottom',
           scrub: 0.8,
-          invalidateOnRefresh: true,
         },
       })
 
@@ -129,20 +148,14 @@ export default function ConnectSection() {
       )
 
       // 0–55%: Hands slide inward from off-screen
-      // yPercent: -50 is declared explicitly so GSAP never drops the
-      // vertical centering (translateY(-50%)) when it takes ownership of
-      // the transform property. Without this, StrictMode double-mounts
-      // can cause GSAP to lose the Y offset, pushing hands below the
-      // overflow:hidden clip boundary and making them invisible.
-      //
-      // Null guards prevent a silent no-op if StrictMode timing leaves
-      // a ref unset (the tween would target nothing and the hand stays
-      // at opacity:0 forever).
+      // immediateRender:false prevents a double-application of "from"
+      // values (gsap.set already applied them above). yPercent:-50 is
+      // declared explicitly so GSAP never drops the vertical centering.
       if (robotHandRef.current) {
         tl.fromTo(
           robotHandRef.current,
           { xPercent: -110, yPercent: -50, opacity: 0 },
-          { xPercent: 0, yPercent: -50, opacity: 1, duration: 0.55, ease: 'none' },
+          { xPercent: 0, yPercent: -50, opacity: 1, duration: 0.55, ease: 'none', immediateRender: false },
           0,
         )
       }
@@ -150,7 +163,7 @@ export default function ConnectSection() {
         tl.fromTo(
           humanHandRef.current,
           { xPercent: 110, yPercent: -50, opacity: 0 },
-          { xPercent: 0, yPercent: -50, opacity: 1, duration: 0.55, ease: 'none' },
+          { xPercent: 0, yPercent: -50, opacity: 1, duration: 0.55, ease: 'none', immediateRender: false },
           0,
         )
       }
