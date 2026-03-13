@@ -116,6 +116,7 @@ export default function ConnectSection() {
           start: 'top top',
           end: 'bottom bottom',
           scrub: 0.8,
+          invalidateOnRefresh: true,
         },
       })
 
@@ -128,16 +129,18 @@ export default function ConnectSection() {
       )
 
       // 0–55%: Hands slide inward from off-screen
+      // immediateRender: true ensures the "from" state is applied on
+      // creation even if the scroll position is non-zero (e.g. reload).
       tl.fromTo(
         robotHandRef.current,
         { xPercent: -110, opacity: 0 },
-        { xPercent: 0, opacity: 1, duration: 0.55, ease: 'none' },
+        { xPercent: 0, opacity: 1, duration: 0.55, ease: 'none', immediateRender: true },
         0,
       )
       tl.fromTo(
         humanHandRef.current,
         { xPercent: 110, opacity: 0 },
-        { xPercent: 0, opacity: 1, duration: 0.55, ease: 'none' },
+        { xPercent: 0, opacity: 1, duration: 0.55, ease: 'none', immediateRender: true },
         0,
       )
 
